@@ -29,7 +29,7 @@ class SettingsModulePlugin extends Plugin
             new TwigFunction(
                 'setting_value',
                 function ($key, $default = null) {
-                    return $this->dispatch(new GetSettingValue($key, $default));
+                    return dispatch_now(new GetSettingValue($key, $default));
                 }
             ),
             new TwigFunction(
@@ -37,11 +37,11 @@ class SettingsModulePlugin extends Plugin
                 function ($key) {
 
                     /* @var SettingInterface $setting */
-                    if (!$setting = $this->dispatch(new GetSetting($key))) {
+                    if (!$setting = dispatch_now(new GetSetting($key))) {
                         return null;
                     }
 
-                    return (new Decorator())->decorate($this->dispatch(new GetValueFieldType($setting)));
+                    return decorate(dispatch_now(new GetValueFieldType($setting)));
                 }
             ),
         ];
