@@ -38,7 +38,7 @@ class GetValuePresenter
     public function handle()
     {
         /* @var FieldType $type */
-        if ($type = dispatch_now(new GetValueFieldType($this->setting))) {
+        if ($type = dispatch_sync(new GetValueFieldType($this->setting))) {
             return $type->getPresenter();
         }
 
