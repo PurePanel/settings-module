@@ -117,7 +117,7 @@ class SettingRepository extends EntryRepository implements SettingRepositoryInte
         }
 
         if (!$setting && !$default) {
-            return dispatch_now(new GetDefaultValue($key));
+            return dispatch_sync(new GetDefaultValue($key));
         }
 
         return $default;

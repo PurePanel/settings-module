@@ -26,6 +26,6 @@ class ClearHttpCache
             return;
         }
 
-        dispatch_now(new ClearCache());
+        dispatch_sync(new ClearCache());
     }
 }
